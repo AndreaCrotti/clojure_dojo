@@ -10,7 +10,10 @@
 ;; (postfix 1 + 2)
 ;; "(+ I IV)"
 
+;; 
+
 (deftest test-roman
   (testing "simple conversion roman to int"
     (is (= (to-int "V") 5))
-    (is (= (to-int "VI") 6)())))
+    (is (= (to-int "IX") 9))
+    (is (= (to-int "VI") 6))))
