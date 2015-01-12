@@ -29,7 +29,7 @@
         (dosync
          (if (= idx 0)
            (ref-set tmp-result (+ @tmp-result intval))
-           (if (> val (nth reversed (- val 1)))
+           (if (> intval (nth reversed (- idx 1)))
              (ref-set tmp-result (- @tmp-result intval))
              (ref-set tmp-result (+ @tmp-result intval)))))))))
 
