@@ -1,7 +1,5 @@
 (ns clojure-dojo.core.roman)
 
-(def tmp-result (ref 0))
-
 (def map-symbols
   {:I 1
    :V 5
@@ -10,9 +8,6 @@
    :C 100
    :M 1000
    })
-
-(defn calculate [string]
-  string)
 
 (defn symbol-to-int [sym]
   ((keyword sym) map-symbols))

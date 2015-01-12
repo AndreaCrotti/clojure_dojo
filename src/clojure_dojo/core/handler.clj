@@ -6,7 +6,6 @@
 
 (defroutes app-routes
   (GET "/" [] "Hello World")
-  (GET "/calc" [string] (calculate string))
   (GET "/to_int" [roman] (-> roman to-int str))
   (route/not-found "Not Found"))
 
