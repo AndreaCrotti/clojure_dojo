@@ -20,6 +20,23 @@
 (defn enum [s]
   (map vector (range) s))
 
+(defn- to-int-worker [roman-reverse-seq]
+  (let [max-so-far (atom 0)
+        total (atom 0)]
+    (doseq [s roman-reverse-seq]
+      (if (> (symbol-to-int s) @max-so-far)
+        (do
+          (reset! max-so-far (symbol-to-int s))
+          (reset! total (+ @total (symbol-to-int s)))
+          )
+        (reset! total (- @total (symbol-to-int s)))
+        )
+      )
+    @total))
+
+(defn to-int [roman-str]
+  (to-int-worker (reverse (map str roman-str))))
+
 (defn loop-over-reversed [roman]
   ;FIXME: get rid of this
   (dosync (ref-set tmp-result 0))
@@ -32,6 +49,3 @@
            (if (> val (nth reversed (- val 1)))
              (ref-set tmp-result (- @tmp-result intval))
              (ref-set tmp-result (+ @tmp-result intval)))))))))
-
-(defn to-int [roman]
-  (reduce + (map (comp symbol-to-int str) roman)))
