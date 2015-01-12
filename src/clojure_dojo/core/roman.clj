@@ -12,9 +12,6 @@
 (defn symbol-to-int [sym]
   ((keyword sym) map-symbols))
 
-(defn enum [s]
-  (map vector (range) s))
-
 (defn- to-int-worker [roman-reverse-seq]
   (let [max-so-far (atom 0)
         total (atom 0)]
